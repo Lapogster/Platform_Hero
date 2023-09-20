@@ -1,1 +1,9 @@
+#Shaderlabs fix
 *.shader linguist-detectable=false
+
+#HLSL fix
+*.hlsl linguist-detectable=false
+*.cginc linguist-detectable=false
+*.fx linguist-detectable=false
+*.fxh linguist-detectable=false
+*.hlsli linguist-detectable=false
