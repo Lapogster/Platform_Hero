@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     // Variables
     private float horizontal;
-    private float speed = 2f;
-    private float jumpingPower = 12f;
     private bool facingRight = true;
 
     // Serialised Feilds (Visible in Unity Editor without being public)
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float jumpingPower = 12f;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
