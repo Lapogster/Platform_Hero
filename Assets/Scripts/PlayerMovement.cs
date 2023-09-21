@@ -16,11 +16,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    public Animator animator;
+
     // Update is called once per frame
     void Update()
     {
         // Get horizontal movement input
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        // Tell the animator if the player is moving
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         // Get jump input and jump if currently on the ground
         if (Input.GetButtonDown("Jump") && IsGrounded())
