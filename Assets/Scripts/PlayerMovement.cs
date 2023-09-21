@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     // Variables
     private float horizontal;
     private bool facingRight = true;
+    private float coyoteTimeTimer;
+    private float jumpCooldown = 0f;
 
     // Serialised Feilds (Visible in Unity Editor without being public)
     [SerializeField] private float speed = 6f;
@@ -28,8 +30,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         // Get jump input and jump if currently on the ground
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && coyoteTimeTimer > 0f)
         {
+            coyoteTimeTimer = 0f;
+            jumpCooldown = 5f;
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
@@ -48,6 +52,24 @@ public class PlayerMovement : MonoBehaviour
     {
         // Update velocity based on horizontal input
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
+        // Coyote Time implementation
+        if (IsGrounded() && jumpCooldown == 0)
+        {
+            coyoteTimeTimer = 10f;
+        }
+        else
+        {
+            if (coyoteTimeTimer >= 1f)
+            {
+                coyoteTimeTimer += -1f;
+            }
+        }
+        // Jump cooldown removes double jump that was occuring because of framerate difference between update/fixedupdate
+        if (jumpCooldown > 0f)
+        {
+            jumpCooldown += -1f;
+        }
     }
 
     // Flip character based on direction curently facing

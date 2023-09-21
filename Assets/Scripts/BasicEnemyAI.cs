@@ -8,6 +8,8 @@ public class BasicEnemyAI : MonoBehaviour
     public bool isEnemyFacingRight;
     public float speed;
 
+    private float despawnTimer = -1f;
+
     [SerializeField] private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -47,5 +49,26 @@ public class BasicEnemyAI : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
+    }
+
+    public void Despawn()
+    {
+        if (despawnTimer == -1f)
+        {
+            despawnTimer = 60f;
+        }
+        else if (despawnTimer == 0f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (despawnTimer > 0)
+        {
+            despawnTimer += -1f;
+            Despawn();
+        }
     }
 }

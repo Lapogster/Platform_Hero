@@ -12,5 +12,9 @@ public class BarrierDeath : MonoBehaviour
             Debug.Log("Player has entered a death barrier");
             SceneManager.LoadScene("You Died", LoadSceneMode.Single);
         }
+        else if (collision.tag == "Basic Enemy")
+        {
+            collision.gameObject.GetComponent<BasicEnemyAI>().Despawn();
+        }
     }
 }
