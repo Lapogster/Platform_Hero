@@ -7,7 +7,7 @@ public class BarrierDeath : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Environment")
+        if (collision.tag == "Player")
         {
             Debug.Log("Player has entered a death barrier");
             SceneManager.LoadScene("You Died", LoadSceneMode.Single);
