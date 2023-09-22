@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemyAI : MonoBehaviour
+public class ChasingEnemyAI : MonoBehaviour
 {
     // Variables
     public bool isEnemyFacingRight;
     public float speed;
+    public bool isAgro;
+
+    private bool startedAgro = false;
 
     private float despawnTimer = -1f;
 
@@ -14,6 +17,8 @@ public class BasicEnemyAI : MonoBehaviour
     private float collisionTimerResetTime = 25f;
 
     [SerializeField] private Rigidbody2D rb;
+
+    public GameObject playerObject;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +41,36 @@ public class BasicEnemyAI : MonoBehaviour
         else if (isEnemyFacingRight == false)
         {
             rb.velocity = new Vector2(-1f * speed, rb.velocity.y);
+        }
+
+        if (isAgro)
+        {
+            if (startedAgro == false)
+            {
+                speed *= 3;
+                startedAgro = true;
+            }
+
+            if (playerObject.transform.position.x > gameObject.transform.position.x)
+            {
+                if (isEnemyFacingRight == false)
+                {
+                    Vector3 localScale = transform.localScale;
+                    localScale.x *= -1f;
+                    transform.localScale = localScale;
+                    isEnemyFacingRight = true;
+                }
+            }
+            else if (playerObject.transform.position.x < gameObject.transform.position.x)
+            {
+                if (isEnemyFacingRight == true)
+                {
+                    Vector3 localScale = transform.localScale;
+                    localScale.x *= -1f;
+                    transform.localScale = localScale;
+                    isEnemyFacingRight = false;
+                }
+            }
         }
     }
 
@@ -101,11 +136,11 @@ public class BasicEnemyAI : MonoBehaviour
     // Turn when walking into another instance
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Basic Enemy")
+        if (collision.gameObject.tag == "Chasing Enemy")
         {
             // Debug.Log("triggered");
             // Debug.Log(collision.gameObject);
-            collision.gameObject.GetComponent<BasicEnemyAI>().Flip();
+            collision.gameObject.GetComponent<ChasingEnemyAI>().Flip();
             // Flip();
 
             if (collisionTimer == -1f)
@@ -114,9 +149,9 @@ public class BasicEnemyAI : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Chasing Enemy")
+        if (collision.gameObject.tag == "Basic Enemy")
         {
-            collision.gameObject.GetComponent<ChasingEnemyAI>().Flip();
+            collision.gameObject.GetComponent<BasicEnemyAI>().Flip();
 
             if (collisionTimer == -1f)
             {
@@ -127,7 +162,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Basic Enemy")
+        if (collision.gameObject.tag == "Chasing Enemy")
         {
             if (collisionTimer == 0f)
             {
@@ -136,7 +171,7 @@ public class BasicEnemyAI : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Chasing Enemy")
+        if (collision.gameObject.tag == "Basic Enemy")
         {
             if (collisionTimer == 0f)
             {

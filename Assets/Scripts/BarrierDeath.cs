@@ -16,5 +16,9 @@ public class BarrierDeath : MonoBehaviour
         {
             collision.gameObject.GetComponent<BasicEnemyAI>().Despawn();
         }
+        else if (collision.tag == "Chasing Enemy")
+        {
+            collision.gameObject.GetComponent<ChasingEnemyAI>().Despawn();
+        }
     }
 }
