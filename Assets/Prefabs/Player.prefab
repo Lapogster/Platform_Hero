@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 1504247224350592042}
   - component: {fileID: 4636231654159503036}
   - component: {fileID: 4551956346541571709}
+  - component: {fileID: 77650005083873588}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  jumpingPower: 12
+  jumpingPower: 13
   rb: {fileID: 4675048643679907832}
   groundCheck: {fileID: 6937617352757305306}
   groundLayer:
@@ -299,6 +300,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &77650005083873588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884884611641957041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c19a3e967d26452bae4f7294e6cd317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvulnerable: 0
+  startHealth: 1
 --- !u!1 &8484286913802559834
 GameObject:
   m_ObjectHideFlags: 0

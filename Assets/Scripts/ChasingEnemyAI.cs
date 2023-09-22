@@ -179,5 +179,10 @@ public class ChasingEnemyAI : MonoBehaviour
                 Flip();
             }
         }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerLogic>().TakeDamage();
+        }
     }
 }

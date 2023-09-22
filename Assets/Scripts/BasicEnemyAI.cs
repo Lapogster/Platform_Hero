@@ -144,5 +144,10 @@ public class BasicEnemyAI : MonoBehaviour
                 Flip();
             }
         }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerLogic>().TakeDamage();
+        }
     }
 }
