@@ -10,6 +10,9 @@ public class BasicEnemyAI : MonoBehaviour
 
     private float despawnTimer = -1f;
 
+    private float collisionTimer = -1f;
+    private float collisionTimerResetTime = 25f;
+
     [SerializeField] private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -65,10 +68,62 @@ public class BasicEnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (despawnTimer > 0)
+        if (despawnTimer > 0f)
         {
             despawnTimer += -1f;
             Despawn();
+        }
+
+        if (collisionTimer > 0f)
+        {
+            collisionTimer += -1f;
+        }
+
+        if (collisionTimer == 0f)
+        {
+            if (collisionTimerResetTime > 0f)
+            {
+                collisionTimerResetTime += -1f;
+            }
+            if (collisionTimerResetTime == 0)
+            {
+                collisionTimer = -1f;
+                collisionTimerResetTime = 25f;
+            }
+        }
+
+        if (collisionTimer == -1f)
+        {
+            collisionTimerResetTime = 25f;
+        }
+    }
+
+    // Turn when walking into another instance
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Basic Enemy")
+        {
+            // Debug.Log("triggered");
+            // Debug.Log(collision.gameObject);
+            collision.gameObject.GetComponent<BasicEnemyAI>().Flip();
+            // Flip();
+
+            if (collisionTimer == -1f)
+            {
+                collisionTimer = 75f;
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Basic Enemy")
+        {
+            if (collisionTimer == 0f)
+            {
+                collisionTimer = -1f;
+                Flip();
+            }
         }
     }
 }
