@@ -10,6 +10,11 @@ public class BarrierDeath : MonoBehaviour
         if (collision.tag == "Player")
         {
             Debug.Log("Player has entered a death barrier");
+
+            // Make the player take damage (sometimes kills) - main purpose it to turn player red
+            collision.gameObject.GetComponent<PlayerLogic>().TakeDamage();
+
+            //Insta-kills player if they can survive the first hit
             SceneManager.LoadScene("You Died", LoadSceneMode.Single);
         }
         else if (collision.tag == "Basic Enemy")
