@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;
     private float coyoteTimeTimer;
     private float jumpCooldown = 0f;
+    private float jumpInputBuffer = 0f;
 
     // Serialised Feilds (Visible in Unity Editor without being public)
     [SerializeField] private float speed = 6f;
@@ -35,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeTimer = 0f;
             jumpCooldown = 5f;
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        // Input buffering, allows the player to press jump a few frames before landing and still be able to jump
+        if (Input.GetButtonDown("Jump") && coyoteTimeTimer == 0f)
+        {
+            jumpInputBuffer = 10f;
         }
 
         // Start slowing down after jump button released - allows higher jump if button held for longer
@@ -69,6 +76,21 @@ public class PlayerMovement : MonoBehaviour
         if (jumpCooldown > 0f)
         {
             jumpCooldown += -1f;
+        }
+
+        // Input buffer for jumping
+        if (jumpInputBuffer > 0)
+        {
+            jumpInputBuffer += -1f;
+
+            if (IsGrounded() && jumpCooldown == 0)
+            {
+                coyoteTimeTimer = 0f;
+                jumpCooldown = 5f;
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+
+                jumpInputBuffer = 0;
+            }
         }
     }
 
