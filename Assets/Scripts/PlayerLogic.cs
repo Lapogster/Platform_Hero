@@ -8,7 +8,7 @@ public class PlayerLogic : MonoBehaviour
     // Variables
     public bool isInvulnerable;
     private bool isImmune = false;
-    public int startHealth = 1;
+    public int startHealth;
     private int currentHealth;
     private bool justTookDamage = false;
     private float damageRedCooldown = 40f;
