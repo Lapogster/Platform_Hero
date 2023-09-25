@@ -7,6 +7,9 @@ public class DeathScreenButtons : MonoBehaviour
 {
     public void RestartButton()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 

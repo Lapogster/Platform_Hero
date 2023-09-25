@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInvulnerable: 0
   startHealth: 1
+  powerUpUI: {fileID: 0}
 --- !u!1 &8484286913802559834
 GameObject:
   m_ObjectHideFlags: 0

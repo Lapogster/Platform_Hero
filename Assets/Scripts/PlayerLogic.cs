@@ -15,6 +15,10 @@ public class PlayerLogic : MonoBehaviour
     private float maxImmunityFrames = 43f;
     private float immunityFrames = 43f;
 
+    // Power Up
+    public string currentPowerUp;
+    // public GameObject powerUpUI;
+
     private void Start()
     {
         currentHealth = startHealth;
@@ -22,6 +26,8 @@ public class PlayerLogic : MonoBehaviour
         justTookDamage = false;
 
         immunityFrames = maxImmunityFrames;
+
+        currentPowerUp = "None";
     }
 
     public void TakeDamage()
@@ -34,6 +40,11 @@ public class PlayerLogic : MonoBehaviour
             damageRedCooldown = 40f;
 
             isImmune = true;
+
+            if (currentHealth <= 1)
+            {
+                currentPowerUp = "None";
+            }
         }
     }
 
@@ -48,6 +59,8 @@ public class PlayerLogic : MonoBehaviour
             // Reset health so restart works
             currentHealth = startHealth;
 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene("You Died", LoadSceneMode.Single);
         }
         else if (justTookDamage == false)
@@ -81,6 +94,28 @@ public class PlayerLogic : MonoBehaviour
                 immunityFrames = maxImmunityFrames;
                 isImmune = false;
             }
+        }
+    }
+
+    public void CollectPowerup(string powerUpType)
+    {
+        // Debug.Log(powerUpType);
+        if (powerUpType == "Sword")
+        {
+            if (currentPowerUp == "None")
+            {
+                currentHealth += 1;
+            }
+
+            if (currentPowerUp != "Sword")
+            {
+                currentPowerUp = "Sword";
+            }
+        }
+
+        if (powerUpType == null)
+        {
+            Debug.Log("Power-up type error has occured. No type has been detected. This power-up will not take effect");
         }
     }
 }

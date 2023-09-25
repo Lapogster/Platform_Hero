@@ -11,6 +11,9 @@ public class BarrierDeath : MonoBehaviour
         {
             Debug.Log("Player has entered a death barrier");
 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             // Make the player take damage (sometimes kills) - main purpose it to turn player red
             collision.gameObject.GetComponent<PlayerLogic>().TakeDamage();
 
