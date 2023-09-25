@@ -1,0 +1,3 @@
+Sword Power Design Idea:
+Increase sword length, remove second sword, add shield behind sword.
+(Remove placeholder sword text aswell)
