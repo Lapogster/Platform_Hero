@@ -19,6 +19,8 @@ public class PlayerLogic : MonoBehaviour
     public string currentPowerUp;
     // public GameObject powerUpUI;
 
+    public Animator animator;
+
     private void Start()
     {
         currentHealth = startHealth;
@@ -44,6 +46,8 @@ public class PlayerLogic : MonoBehaviour
             if (currentHealth <= 1)
             {
                 currentPowerUp = "None";
+
+                animator.SetBool("HasSword", false);
             }
         }
     }
@@ -110,6 +114,7 @@ public class PlayerLogic : MonoBehaviour
             if (currentPowerUp != "Sword")
             {
                 currentPowerUp = "Sword";
+                animator.SetBool("HasSword", true);
             }
         }
 
