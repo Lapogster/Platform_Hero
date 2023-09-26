@@ -148,6 +148,8 @@ public class BasicEnemyAI : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerLogic>().TakeDamage();
+
+            // gameObject.GetComponent<EnemyDamage>().TakeDamage();
         }
     }
 }
