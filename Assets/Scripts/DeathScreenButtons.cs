@@ -10,7 +10,7 @@ public class DeathScreenButtons : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        SceneManager.LoadScene("Level", LoadSceneMode.Single);
+        SceneManager.LoadScene("Test Level", LoadSceneMode.Single);
     }
 
     public void QuitButton()

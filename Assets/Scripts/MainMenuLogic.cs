@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuLogic : MonoBehaviour
 {
@@ -104,5 +105,11 @@ public class MainMenuLogic : MonoBehaviour
     {
         newGameMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void LoadTestLevel()
+    {
+        Debug.Log("Loading Testing Only Level");
+        SceneManager.LoadScene("Test Level", LoadSceneMode.Single);
     }
 }
