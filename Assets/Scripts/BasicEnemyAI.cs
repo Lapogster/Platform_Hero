@@ -13,7 +13,7 @@ public class BasicEnemyAI : MonoBehaviour
     private float collisionTimer = -1f;
     private float collisionTimerResetTime = 25f;
 
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()

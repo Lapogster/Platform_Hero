@@ -16,7 +16,7 @@ public class ChasingEnemyAI : MonoBehaviour
     private float collisionTimer = -1f;
     private float collisionTimerResetTime = 25f;
 
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     public GameObject playerObject;
 
@@ -47,7 +47,7 @@ public class ChasingEnemyAI : MonoBehaviour
         {
             if (startedAgro == false)
             {
-                speed *= 3;
+                speed *= 2f;
                 startedAgro = true;
             }
 
