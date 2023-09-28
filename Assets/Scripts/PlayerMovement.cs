@@ -7,15 +7,15 @@ public class PlayerMovement : MonoBehaviour
     // Variables
     private float horizontal;
     private bool facingRight = true;
-    private float coyoteTimeTimer;
-    private float jumpCooldown = 0f;
+    public float coyoteTimeTimer;
+    public float jumpCooldown = 0f;
     private float jumpInputBuffer = 0f;
 
     // Serialised Feilds (Visible in Unity Editor without being public)
     [SerializeField] private float speed = 6f;
     [SerializeField] private float jumpingPower = 12f;
 
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
