@@ -1,0 +1,3 @@
+Classes Beaten:
+'Has Beat Class ""'
+Set to 1 if the player has beat the game with that class, or 0 if they have not.

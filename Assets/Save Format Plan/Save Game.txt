@@ -1,0 +1,7 @@
+Save Game:
+
+'Has Save Game' - 0 if no save game, 1 if save game exists
+
+'GameClass' - class being played in current saved game: 0-none, 1-sword, 2-bow etc
+'CurrentLevel' - the level the player is up to: 1-level 1, 2-level 2 etc
+'CurrentPowerUp' - "None"-none, "Sword"-sword etc

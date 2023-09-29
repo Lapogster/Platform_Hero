@@ -75,6 +75,12 @@ public class PlayerLogic : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
+
+        if (currentPowerUp == "Sword")
+        {
+            animator.SetBool("HasSword", true);
+            swordLogicObject.SetActive(true);
+        }
     }
 
     private void FixedUpdate()
