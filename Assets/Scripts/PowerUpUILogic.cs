@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpUILogic : MonoBehaviour
 {
     // Variables
-    public GameObject player;
+    // private GameObject player = GameObject.FindGameObjectWithTag("Player");
 
     // Add all class/power-up ui logos here
     public GameObject swordUI;
@@ -21,7 +21,7 @@ public class PowerUpUILogic : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetComponent<PlayerLogic>().currentPowerUp == "None")
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLogic>().currentPowerUp == "None")
         {
             if (currentUIShown != "None")
             {
@@ -29,7 +29,7 @@ public class PowerUpUILogic : MonoBehaviour
                 currentUIShown = "None";
             }
         }
-        else if (player.GetComponent<PlayerLogic>().currentPowerUp == "Sword")
+        else if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLogic>().currentPowerUp == "Sword")
         {
             if (currentUIShown != "Sword")
             {

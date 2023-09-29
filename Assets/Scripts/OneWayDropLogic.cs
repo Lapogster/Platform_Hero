@@ -8,7 +8,7 @@ public class OneWayDropLogic : MonoBehaviour
     private float hitboxFixCooldown = 20f;
     private float startHitboxFixCooldown = 20f;
 
-    public GameObject player;
+    // public GameObject player;
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -51,7 +51,7 @@ public class OneWayDropLogic : MonoBehaviour
             {
                 hitboxEnabled = true;
                 hitboxFixCooldown = startHitboxFixCooldown;
-                player.GetComponent<BoxCollider2D>().enabled = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>().enabled = true;
             }
         }
 
