@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Function that returns a bool stating if the player is currently on the ground
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }

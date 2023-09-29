@@ -8,6 +8,8 @@ public class ChasingEnemyAI : MonoBehaviour
     public bool isEnemyFacingRight;
     public float speed;
     public bool isAgro;
+    private bool canTurn = true;
+    private float canTurnCooldown = 15f;
 
     private bool startedAgro = false;
 
@@ -53,22 +55,26 @@ public class ChasingEnemyAI : MonoBehaviour
 
             if (playerObject.transform.position.x > gameObject.transform.position.x)
             {
-                if (isEnemyFacingRight == false)
+                if (isEnemyFacingRight == false && canTurn == true)
                 {
                     Vector3 localScale = transform.localScale;
                     localScale.x *= -1f;
                     transform.localScale = localScale;
                     isEnemyFacingRight = true;
+                    canTurn = false;
+                    canTurnCooldown = 15f;
                 }
             }
             else if (playerObject.transform.position.x < gameObject.transform.position.x)
             {
-                if (isEnemyFacingRight == true)
+                if (isEnemyFacingRight == true && canTurn == true)
                 {
                     Vector3 localScale = transform.localScale;
                     localScale.x *= -1f;
                     transform.localScale = localScale;
                     isEnemyFacingRight = false;
+                    canTurn = false;
+                    canTurnCooldown = 15f;
                 }
             }
         }
@@ -130,6 +136,19 @@ public class ChasingEnemyAI : MonoBehaviour
         if (collisionTimer == -1f)
         {
             collisionTimerResetTime = 25f;
+        }
+
+        // Stops turning every frame if player x = enemy x
+        if (canTurn == false)
+        {
+            if (canTurnCooldown > 0)
+            {
+                canTurnCooldown += -1f;
+            }
+            else if (canTurnCooldown == 0)
+            {
+                canTurn = true;
+            }
         }
     }
 
