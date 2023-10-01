@@ -14,6 +14,14 @@ public class DeathScreenButtons : MonoBehaviour
         {
             SceneManager.LoadScene("Demo Level 1", LoadSceneMode.Single);
         }
+        else if (PlayerPrefs.GetInt("Current Level") == 2)
+        {
+            SceneManager.LoadScene("Demo Level 2", LoadSceneMode.Single);
+        }
+        else if (PlayerPrefs.GetInt("Current Level") == 3)
+        {
+            SceneManager.LoadScene("Demo Level 3", LoadSceneMode.Single);
+        }
     }
 
     public void QuitButton()

@@ -12,11 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo/Demo Level 1.unity
     guid: afe1c413035b64aa587cd40e78834d84
   - enabled: 1
+    path: Assets/Scenes/Demo/Demo Level 2.unity
+    guid: 6555a82aef8d749c69714dd4f89e6f82
+  - enabled: 1
+    path: Assets/Scenes/Demo/Demo Level 3.unity
+    guid: 767d8962363a644ef91d7a55d9753877
+  - enabled: 1
     path: Assets/Scenes/Level Passed.unity
     guid: f8990d8f5894b46a5aa035f52c1024b6
   - enabled: 1
     path: Assets/Scenes/You Died.unity
     guid: fb61cc28a729645159acac9b6b5131e0
+  - enabled: 1
+    path: Assets/Scenes/Game Beat.unity
+    guid: fec5fb0ac5afc4735b05dc6e47e89b9f
   - enabled: 1
     path: Assets/Scenes/Test Level.unity
     guid: 6f685fdae2a9f4e6fa07a6b752f9fdfb

@@ -121,7 +121,7 @@ public class MainMenuLogic : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("Current Level") == 2)
         {
-            SceneManager.LoadScene("Demo Level 1", LoadSceneMode.Single);
+            SceneManager.LoadScene("Demo Level 2", LoadSceneMode.Single);
         }
     }
 }
