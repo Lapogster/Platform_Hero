@@ -11,17 +11,33 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset;
     public float damping;
 
+    private bool playerFound = false;
+
     private Vector3 velocity = Vector3.zero;
 
     private void Update()
     {
         cameraTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (playerFound == false)
+        {
+            if (cameraTarget.gameObject.tag != "Player")
+            {
+                Debug.Log("Player not found yet");
+            }
+            else if (cameraTarget.gameObject.tag == "Player")
+            {
+                playerFound = true;
+            }
+        }
     }
 
     // Unity physics synced update
     private void FixedUpdate()
     {
-        Vector3 movePosition = cameraTarget.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
+        if (playerFound)
+        {
+            Vector3 movePosition = cameraTarget.position + offset;
+            transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
+        }
     }
 }

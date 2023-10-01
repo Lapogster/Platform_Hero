@@ -32,6 +32,10 @@ public class PlayerLogic : MonoBehaviour
         immunityFrames = maxImmunityFrames;
 
         currentPowerUp = "None";
+        if (PlayerPrefs.GetString("Current PowerUp") == "Sword")
+        {
+            CollectPowerup("Sword");
+        }
     }
 
     public void TakeDamage()
@@ -48,6 +52,7 @@ public class PlayerLogic : MonoBehaviour
             if (currentHealth <= 1)
             {
                 currentPowerUp = "None";
+                // PlayerPrefs.SetString("Current PowerUp", "None");
 
                 animator.SetBool("HasSword", false);
 
