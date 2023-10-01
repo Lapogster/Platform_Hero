@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Basic Enemy
   - Chasing Enemy
+  - Patrol Enemy
   layers:
   - Default
   - TransparentFX

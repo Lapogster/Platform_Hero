@@ -75,7 +75,11 @@ public class SwordLogic : MonoBehaviour
             {
                 collision.gameObject.GetComponent<EnemyDamage>().TakeDamage();
             }
-            if (collision.tag == "Chasing Enemy")
+            else if (collision.tag == "Chasing Enemy")
+            {
+                collision.gameObject.GetComponent<EnemyDamage>().TakeDamage();
+            }
+            else if (collision.tag == "Patrol Enemy")
             {
                 collision.gameObject.GetComponent<EnemyDamage>().TakeDamage();
             }

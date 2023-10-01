@@ -23,5 +23,9 @@ public class BouncePadLogic : MonoBehaviour
         {
             collision.gameObject.GetComponent<ChasingEnemyAI>().rb.velocity = new Vector2(collision.gameObject.GetComponent<ChasingEnemyAI>().rb.velocity.x, jumpPower);
         }
+        else if (collision.tag == "Patrol Enemy")
+        {
+            collision.gameObject.GetComponent<PatrolEnemyAI>().rb.velocity = new Vector2(collision.gameObject.GetComponent<PatrolEnemyAI>().rb.velocity.x, jumpPower);
+        }
     }
 }

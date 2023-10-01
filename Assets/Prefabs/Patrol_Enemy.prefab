@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3528124129105127815}
   m_Layer: 0
   m_Name: Patrol_Enemy
-  m_TagString: Basic Enemy
+  m_TagString: Patrol Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
