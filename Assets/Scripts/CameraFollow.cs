@@ -5,11 +5,18 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     // Variables
-    public Transform cameraTarget;
+    // public Transform cameraTarget;
+    private Transform cameraTarget;
+
     public Vector3 offset;
     public float damping;
 
     private Vector3 velocity = Vector3.zero;
+
+    private void Update()
+    {
+        cameraTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
 
     // Unity physics synced update
     private void FixedUpdate()
